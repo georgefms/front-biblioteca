@@ -10,7 +10,7 @@ import { Book } from '../models/book';
 export class BooksComponent implements OnInit {
 
   books: Book[] = [];
-  displayedColumns = ['_id', 'name', 'year','author', 'gender']
+  displayedColumns = ['id', 'name', 'year','author', 'gender']
 
   constructor() { }
 
