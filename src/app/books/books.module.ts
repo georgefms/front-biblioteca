@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BooksRoutingModule } from './books-routing.module';
 import { BooksComponent } from './books/books.component';
-import {MatTableModule} from '@angular/material/table';
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
 
 
 
@@ -14,7 +14,7 @@ import {MatTableModule} from '@angular/material/table';
   imports: [
     CommonModule,
     BooksRoutingModule,
-    MatTableModule
+    AppMaterialModule
   ]
 })
 export class BooksModule { }
