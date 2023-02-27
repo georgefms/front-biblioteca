@@ -22,4 +22,9 @@ export class BooksService {
       )
     );
   }
+
+  save(record: Book){
+    return this.httpClient.post<Book>(this.API, record)
+    .pipe(first());
+  }
 }
