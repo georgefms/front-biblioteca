@@ -15,8 +15,7 @@ import { BooksService } from '../services/books.service';
 export class BooksComponent implements OnInit {
 
   books$: Observable<Book[]>;
-  displayedColumns = ['id', 'name', 'year','author', 'gender', 'actions']
-
+  
   constructor(
     private booksService: BooksService,
     public dialog: MatDialog,
