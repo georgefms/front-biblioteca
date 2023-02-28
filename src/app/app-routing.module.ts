@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '',pathMatch: 'full', redirectTo: 'books' },
-  {path: 'books', 
-    loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
-  }
+    {
+      path: '',
+      pathMatch: 'full',
+      loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    },
+    {
+      path: 'books',
+      loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
+    }
 ];
 
 @NgModule({
