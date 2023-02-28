@@ -17,10 +17,8 @@ export class BooksService {
     return this.httpClient.get<Book[]>(this.API)
     .pipe(
       first(),
-      delay(1000),
-      tap(books => console.log(books)
-      )
-    );
+      delay(1000)
+      );
   }
   findById(id: number){
     return this.httpClient.get<Book>(`${this.API}/${id}`);
@@ -33,6 +31,10 @@ export class BooksService {
     return this.create(record);
   }
 
+  remove(id: number){
+    return this.httpClient.delete(`${this.API}/${id}`);
+  }
+
   private create(record: Partial<Book>){
     return this.httpClient.post<Book>(this.API, record)
     .pipe(first());
@@ -42,4 +44,5 @@ export class BooksService {
     return this.httpClient.put<Book>(`${this.API}/${record.id}`, record)
     .pipe(first());
   }
+  
 }

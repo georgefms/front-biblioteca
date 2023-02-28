@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
@@ -14,13 +15,18 @@ import { BooksService } from '../services/books.service';
 })
 export class BooksComponent implements OnInit {
 
-  books$: Observable<Book[]>;
+  books$: Observable<Book[]>| null = null;
   
   constructor(
     private booksService: BooksService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar) {
+    this.refresh();
+    }
+
+   refresh(){
     this.books$ = this.booksService.list()
     .pipe(
       catchError( error => {
@@ -29,6 +35,7 @@ export class BooksComponent implements OnInit {
       })
     );
    }
+   
 
    onError(errorMessage: string) {
     this.dialog.open(ErrorDialogComponent, {
@@ -42,6 +49,18 @@ export class BooksComponent implements OnInit {
 
   onEdit(book: Book){
     this.router.navigate(['edit', book.id], {relativeTo: this.route});
+  }
+  onRemove(book: Book){
+    this.booksService.remove(book.id).subscribe(
+      () => {  
+        this.refresh();
+        this.snackBar.open("Livro excluído com Sucesso", 'X',{
+        duration: 3000,
+        verticalPosition:'top',
+        horizontalPosition: 'center'});
+      },
+      () => this.onError('Não consigo')
+    );
   }
 
   ngOnInit(): void {

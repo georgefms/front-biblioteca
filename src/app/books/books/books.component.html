@@ -1,24 +1,29 @@
 <mat-card>
   <mat-toolbar>
     <span>Lista de Livros Disponíveis</span>
-      <button mat-mini-fab color="primary">
-        <mat-icon (click)="onAdd()" aria-hidden="false" aria-label="plus icon" fontIcon="add"></mat-icon>
-      </button>
+    <button mat-mini-fab color="primary">
+      <mat-icon
+        (click)="onAdd()"
+        aria-hidden="false"
+        aria-label="plus icon"
+        fontIcon="add"
+      ></mat-icon>
+    </button>
   </mat-toolbar>
 
   <div class="mat-elevation-z8 column-flex">
-    <app-books-list *ngIf="books$ | async as books; else loading"
-  [books]="books"
-  (add)="onAdd()"
-  (edit)="onEdit($event)"></app-books-list>
+    <app-books-list
+      *ngIf="books$ | async as books; else loading"
+      [books]="books"
+      (add)="onAdd()"
+      (edit)="onEdit($event)"
+      (delete)="onRemove($event)"
+    ></app-books-list>
 
-  
-
-  <ng-template #loading>
-    <div class="loading-spinner">
-      <mat-spinner></mat-spinner>
-    </div>
-  </ng-template>
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
   </div>
-
 </mat-card>
