@@ -22,8 +22,11 @@ export class BooksService {
       )
     );
   }
+  findById(id: number){
+    return this.httpClient.get<Book>(`${this.API}/${id}`);
+  }
 
-  save(record: Book){
+  save(record: Partial<Book>){
     return this.httpClient.post<Book>(this.API, record)
     .pipe(first());
   }

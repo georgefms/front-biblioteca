@@ -2,6 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { Book } from '../models/book';
 import { BooksService } from '../services/books.service';
 
 @Component({
@@ -11,20 +13,29 @@ import { BooksService } from '../services/books.service';
 })
 export class BookFormComponent implements OnInit{
 
-  form: FormGroup;
+  form = this.formBuilder.group({
+    id: [NaN],
+    name: [''],
+    year: [NaN],
+    author: [''],
+    gender: ['']
+  });
   constructor(private formBuilder: NonNullableFormBuilder,
     private service: BooksService,
     private snackBar: MatSnackBar,
-    private location: Location){
-    this.form = this.formBuilder.group({
-      name: [''],
-      year: [null],
-      author: [''],
-      gender: ['']
-    });
+    private location: Location,
+    private route: ActivatedRoute){
   }
 
   ngOnInit(): void {
+    const book: Book = this.route.snapshot.data['book'];
+    this.form.setValue({
+      id: book.id,
+      name: book.name,
+      author: book.author,
+      gender: book.gender,
+      year: book.year
+    })
     
   }
 

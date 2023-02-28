@@ -34,7 +34,7 @@
     <mat-header-cell *matHeaderCellDef class="action-column-header">Ações</mat-header-cell>
     <mat-cell *matCellDef="let element" class="action-column">
       <button mat-icon-button color="primary" aria-label="Editar livro">
-        <mat-icon>edit</mat-icon>
+        <mat-icon (click)="onEdit(element)">edit</mat-icon>
       </button>
       <button mat-icon-button color="primary" aria-label="Remover livro">
         <mat-icon>delete</mat-icon>
@@ -42,6 +42,6 @@
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>

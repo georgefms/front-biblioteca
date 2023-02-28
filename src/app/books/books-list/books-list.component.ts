@@ -11,6 +11,9 @@ export class BooksListComponent implements OnInit{
 
   @Input() books: Book[] = [];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
+
+
   readonly displayedColumns = ['id', 'name', 'year','author', 'gender', 'actions']
 
 
@@ -24,5 +27,9 @@ export class BooksListComponent implements OnInit{
 
   onAdd(){
     this.add.emit(true);
+  }
+
+  onEdit(element: Book){
+    this.edit.emit(element);
   }
 }

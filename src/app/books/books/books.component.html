@@ -9,7 +9,8 @@
   <div class="mat-elevation-z8 column-flex">
     <app-books-list *ngIf="books$ | async as books; else loading"
   [books]="books"
-  (add)="onAdd()"></app-books-list>
+  (add)="onAdd()"
+  (edit)="onEdit($event)"></app-books-list>
 
   
 
