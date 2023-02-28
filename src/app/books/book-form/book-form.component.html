@@ -5,19 +5,27 @@
   <mat-card-content>
     <form [formGroup]="form" >
       <mat-form-field class="book-form-field">
-        <input formControlName="name" matInput placeholder="Nome">
+        <input formControlName="name" matInput placeholder="Nome" #name>
+        <mat-hint align="end">{{name.value.length || 0 }}/ 200</mat-hint>
+        <mat-error *ngIf="form.get('name')?.invalid">{{getErrorMessage('name')}}</mat-error>
       </mat-form-field>
       
       <mat-form-field class="book-form-field">
-        <input formControlName="year" matInput placeholder="Ano">
+        <input formControlName="year" matInput placeholder="Ano" #year>
+        <mat-hint align="end">{{year.value.length || 0 }}/ 4</mat-hint>
+        <mat-error *ngIf="form.get('name')?.invalid">{{getErrorMessage('year')}}</mat-error>
       </mat-form-field>
     
       <mat-form-field class="book-form-field">
-        <input formControlName="author" matInput placeholder="Autor">
+        <input formControlName="author" matInput placeholder="Autor" #author>
+        <mat-hint align="end">{{author.value.length || 0 }}/ 100</mat-hint>
+        <mat-error *ngIf="form.get('name')?.invalid">{{getErrorMessage('author')}}</mat-error>
       </mat-form-field>
     
       <mat-form-field class="book-form-field">
-        <input formControlName="gender" matInput placeholder="Gênero">
+        <input formControlName="gender" matInput placeholder="Gênero" #gender>
+        <mat-hint align="end">{{gender.value.length || 0 }}/ 100</mat-hint>
+        <mat-error *ngIf="form.get('name')?.invalid">{{getErrorMessage('gender')}}</mat-error>
       </mat-form-field>
     </form>
   </mat-card-content>
