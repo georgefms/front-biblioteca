@@ -27,7 +27,19 @@ export class BooksService {
   }
 
   save(record: Partial<Book>){
+    if(record.id){
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  private create(record: Partial<Book>){
     return this.httpClient.post<Book>(this.API, record)
+    .pipe(first());
+  }
+
+  private update(record: Partial<Book>){
+    return this.httpClient.put<Book>(`${this.API}/${record.id}`, record)
     .pipe(first());
   }
 }
