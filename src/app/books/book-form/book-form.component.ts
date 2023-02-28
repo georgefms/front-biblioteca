@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BooksService } from '../services/books.service';
 
@@ -12,15 +12,15 @@ import { BooksService } from '../services/books.service';
 export class BookFormComponent implements OnInit{
 
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: NonNullableFormBuilder,
     private service: BooksService,
     private snackBar: MatSnackBar,
     private location: Location){
     this.form = this.formBuilder.group({
-      name: [null],
+      name: [''],
       year: [null],
-      author: [null],
-      gender: [null]
+      author: [''],
+      gender: ['']
     });
   }
 

@@ -6,6 +6,8 @@
       </button>
   </mat-toolbar>
 
+  <app-books-list></app-books-list>
+
   <div *ngIf="books$ | async as books; else loading">
   <table mat-table [dataSource]="books" class="mat-elevation-z8">
     <!-- Id Column -->
