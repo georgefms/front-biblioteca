@@ -4,10 +4,14 @@ mat-table{
 }
 
 .action-column{
-  flex: 0 0 75px;
+  flex: 0 0 70px;
 }
 
 .action-column-header{
   flex: 0 0 55px;
 }
 
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+}
