@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Novo Cadastro</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="user">
+      <mat-form-field>
+        <input formControlName="nick" matInput placeholder="Usuário" #nick>
+        <mat-hint align="end">{{nick.value.length || 0 }}/ 30</mat-hint>
+      <mat-error *ngIf="user.get('name')?.invalid">{{getErrorMessage('nick')}}</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input formControlName="password" matInput placeholder="Senha" #password>
+        <mat-hint align="end">{{password.value.length || 0 }}/ 8</mat-hint>
+       <mat-error *ngIf="user.get('password')?.invalid">{{getErrorMessage('password')}}</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
