@@ -14,10 +14,8 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary">Entrar</button>
-    <button mat-raised-button>Cadastro</button>
+    <button mat-raised-button (click)="onAdd()">Cadastro</button>
     <button mat-flat-button>Esqueci minha Senha</button>
-    <a href="/books">
-      <button mat-flat-button>Livros!</button>
-    </a>
+    <button mat-flat-button (click)="onBooks()">Livros!</button>
   </mat-card-actions>
 </mat-card>
